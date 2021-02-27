@@ -6,10 +6,9 @@ import com.onyemowo.diary.services.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/onyemowo")
@@ -24,4 +23,16 @@ public class EntryController {
         return new ResponseEntity<>(new APIResponse(true, "Entry created ")
         , HttpStatus.CREATED);
     }
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllEntries(){
+        List<EntryDTO> entryDTOS = entryService.getAllEntries();
+        return new ResponseEntity<>(entryDTOS,HttpStatus.OK);
+    }
+
+    @GetMapping("/{title}")
+    public ResponseEntity<?> getEntryByTitle(@PathVariable String title){
+        EntryDTO entryDTO = entryService.findEntryByTitle(title);
+        return new ResponseEntity<>(entryDTO, HttpStatus.OK);
+    }
+
 }

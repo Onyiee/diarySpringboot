@@ -5,15 +5,15 @@ import com.onyemowo.diary.DTOS.EntryDTO;
 import java.util.List;
 
 public interface EntryService {
-    public void newEntry(EntryDTO entryDTO);
+     void newEntry(EntryDTO entryDTO);
 
-    public EntryDTO findEntryByTitle(String title);
+    EntryDTO findEntryByTitle(String title);
 
-    public List<EntryDTO> getAllEntries();
+     List<EntryDTO> getAllEntries();
 
-    public void updateEntry(EntryDTO entryDTO);
+    void updateEntry(EntryDTO entryDTO);
 
-    public void deleteEntryById(String id);
+    void deleteEntryById(String id);
 
-    public void deleteEntryByTitle(String title);
+     void deleteEntryByTitle(String title);
 }
